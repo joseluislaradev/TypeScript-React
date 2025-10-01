@@ -1,4 +1,5 @@
 import { type ListOfTodos } from "../types";
+import { Todo } from "./Todo";
 
 interface Props {
   todos: ListOfTodos;
@@ -9,16 +10,12 @@ export const Todos: React.FC<Props> = ({ todos }) => {
     <ul className="todo-list">
       {todos.map((todo) => (
         <li className={todo.completed ? "completed" : ""} key={todo.id}>
-          <div className="view">
-            <input
-              className="toggle"
-              type="checkbox"
-              checked={todo.completed}
-            />
-            <label>{todo.title}</label>
-            <button className="destroy"></button>
-          </div>
-          <input className="edit" value="Create a TodoMVC template" />
+          <Todo
+            key={todo.id}
+            id={todo.id}
+            title={todo.title}
+            completed={todo.completed}
+          />
         </li>
       ))}
     </ul>
