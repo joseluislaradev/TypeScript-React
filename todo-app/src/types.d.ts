@@ -1,7 +1,7 @@
 import { filters } from "./consts.ts";
 
 export interface Todo {
-  id: number;
+  id: string;
   title: string;
   completed: boolean;
 }
