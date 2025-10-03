@@ -18,3 +18,11 @@ export const filtersButton = {
     href: `/?filters=${filters.active}`,
   },
 } as const;
+
+export const Actions = {
+  removeTodo: "REMOVE_TODO",
+  toggleTodo: "TOGGLE_TODO",
+  clearCompletedTodo: "CLEAR_COMPLETED_TODOS",
+  filterSelectedTodo: "FILTER_SELECTED_TODO",
+  addTodo: "ADD_TODO",
+} as const;

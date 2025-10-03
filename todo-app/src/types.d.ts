@@ -1,4 +1,4 @@
-import { filters } from "./consts.ts";
+import { filters, Actions } from "./consts.ts";
 
 export interface Todo {
   id: string;
@@ -13,3 +13,21 @@ export type TodoCompleted = Pick<Todo, "completed">;
 export type ListOfTodos = Todo[];
 
 export type FilterValue = (typeof filters)[keyof typeof filters]; // Esto es para que el tipo sea uno de los valores del objeto filters, la primera es para obtener el tipo de una key del objeto para para poenrlas todas es la segunda parte, ocn eso decirmos que utilice alguna de las keys del Filters y una vez que utiliza la s key saca el type of.
+
+export type State = {
+  todos: ListOfTodos;
+  filters: FilterValue;
+};
+
+export type Action =
+  | { type: typeof Actions.removeTodo; payload: { id: TodoId } }
+  | {
+      type: typeof Actions.toggleTodo;
+      payload: { id: TodoId; completed: TodoCompleted };
+    }
+  | { type: typeof Actions.clearCompletedTodo }
+  | {
+      type: typeof Actions.filterSelectedTodo;
+      payload: { filter: FilterValue };
+    }
+  | { type: typeof Actions.addTodo; payload: { title: TodoTitle } };
